@@ -38,7 +38,7 @@ body {
 .site-watermark {
   position: fixed; inset: 0; z-index: 0;
   display: flex; align-items: center; justify-content: center;
-  pointer-events: none; overflow: hidden; opacity: .12;
+  pointer-events: none; overflow: hidden;
 }
 .site-watermark svg { width: min(72vw, 640px); height: auto; }
 
