@@ -1,12 +1,10 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Header scroll state + progress bar + parallax da marca d'água */
-const header = document.getElementById('header');
+/* Progress bar + parallax da marca d'água */
 const progressBar = document.getElementById('progressBar');
 const root = document.documentElement;
 
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 8);
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   progressBar.style.width = scrolled + '%';
@@ -20,12 +18,14 @@ window.addEventListener('scroll', () => {
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('open');
+  const isOpen = menuToggle.classList.toggle('open');
   mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 });
 mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   menuToggle.classList.remove('open');
   mainNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
 }));
 
 /* Scroll reveal */
