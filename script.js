@@ -3,16 +3,41 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* Progress bar + parallax da marca d'água */
 const progressBar = document.getElementById('progressBar');
 const root = document.documentElement;
+const watermarkImg = document.querySelector('.site-watermark img');
+
+// calcula quanto dá pra deslocar a onça verticalmente sem cortar a imagem
+// (metade do espaço livre acima/abaixo dela na tela, com uma margem de segurança)
+function getWatermarkRange() {
+  if (!watermarkImg) return 0;
+  const headroom = (window.innerHeight - watermarkImg.offsetHeight) / 2;
+  return Math.max(0, Math.min(110, headroom - 12));
+}
+let wmRange = getWatermarkRange();
+window.addEventListener('resize', () => { wmRange = getWatermarkRange(); }, { passive: true });
+if (watermarkImg && !watermarkImg.complete) {
+  watermarkImg.addEventListener('load', () => { wmRange = getWatermarkRange(); });
+}
 
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   progressBar.style.width = scrolled + '%';
 
-  // onça desliza verticalmente conforme a rolagem da página (0% a 100%)
-  const wmShift = (scrolled / 100) * 220 - 110;
+  // onça desliza verticalmente conforme a rolagem da página (0% a 100%), sem cortar
+  const wmShift = (scrolled / 100) * (wmRange * 2) - wmRange;
   root.style.setProperty('--wm-scroll', wmShift.toFixed(1) + 'px');
 }, { passive: true });
+
+/* Esconde a marca d'água de fundo enquanto a trilha de pegadas (portfólio) está na tela */
+const portfolioSection = document.getElementById('portfolio');
+if (portfolioSection) {
+  const watermarkObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      document.body.classList.toggle('hide-watermark', entry.isIntersecting);
+    });
+  }, { threshold: 0.05 });
+  watermarkObserver.observe(portfolioSection);
+}
 
 /* Mobile menu */
 const menuToggle = document.getElementById('menuToggle');

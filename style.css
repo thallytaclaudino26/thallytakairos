@@ -39,7 +39,9 @@ body {
   position: fixed; inset: 0; z-index: 0;
   display: flex; align-items: center; justify-content: center;
   pointer-events: none; overflow: hidden;
+  transition: opacity .6s ease;
 }
+body.hide-watermark .site-watermark { opacity: 0; }
 .site-watermark img {
   width: min(60vw, 620px); height: auto; opacity: .75;
   transform: translateY(var(--wm-scroll, 0px));
