@@ -37,10 +37,10 @@ body {
 /* Site watermark (fixed background emblem) */
 .site-watermark {
   position: fixed; inset: 0; z-index: 0;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: flex-end;
   pointer-events: none; overflow: hidden;
 }
-.site-watermark img { width: min(72vw, 640px); height: auto; opacity: .5; }
+.site-watermark img { width: min(46vw, 460px); height: auto; opacity: .75; transform: translateX(18%); }
 
 main, footer { position: relative; z-index: 1; }
 
@@ -242,30 +242,46 @@ section { padding: 96px 0; scroll-margin-top: 110px; }
 }
 .chat-input-row button:hover { background: var(--lilac-600); }
 
-/* Portfolio */
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+/* Portfolio — cards em formato de pegada de onça, com garras */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 12px; }
 .portfolio-card {
-  display: block; text-decoration: none;
-  border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; background: var(--white);
-  transition: transform .25s, box-shadow .25s;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  text-decoration: none; cursor: pointer;
+  aspect-ratio: 300 / 380; width: 100%; max-width: 300px; margin: 0 auto;
+  background: linear-gradient(160deg, var(--lilac-100), var(--white) 60%);
+  -webkit-mask-image: url("assets/pegada-mascara.svg");
+  mask-image: url("assets/pegada-mascara.svg");
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  filter: drop-shadow(0 8px 18px rgba(115,70,194,.16));
+  transition: transform .25s, filter .25s;
 }
-.portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.portfolio-card.is-private { cursor: default; }
-.portfolio-card.is-private:hover { transform: none; box-shadow: none; }
+.portfolio-card:hover { transform: translateY(-4px) scale(1.03); filter: drop-shadow(0 16px 30px rgba(115,70,194,.34)); }
+.portfolio-card.is-private { cursor: default; background: linear-gradient(160deg, var(--bg-soft), var(--white) 60%); }
+.portfolio-card.is-private:hover { transform: none; filter: drop-shadow(0 8px 18px rgba(115,70,194,.16)); }
+
+.paw-toes {
+  display: flex; align-items: flex-end; justify-content: center;
+  height: 29%; padding-top: 6%;
+}
 .portfolio-tag {
-  display: inline-block; background: var(--lilac-50); color: var(--lilac-600);
-  font-size: .7rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+  display: inline-block; background: rgba(255,255,255,.75); color: var(--lilac-600);
+  font-size: .62rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
 }
-.portfolio-thumb {
-  height: 140px; border-radius: 12px; margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--lilac-100), var(--lilac-50));
+.paw-pad {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; width: 56%; margin: 0 auto; gap: 6px; padding-bottom: 6%;
 }
-.portfolio-card h3 { font-size: 1.02rem; }
-.portfolio-card p { font-size: .9rem; margin-bottom: 0; }
+.portfolio-card h3 { font-size: .92rem; margin: 0; line-height: 1.25; }
+.portfolio-card p {
+  font-size: .74rem; line-height: 1.4; margin: 0; color: var(--text-muted);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
 .portfolio-badge {
-  display: inline-block; margin-top: 12px; font-size: .74rem; font-weight: 600;
-  color: var(--text-muted); background: var(--bg-soft); padding: 4px 10px; border-radius: 999px;
+  display: inline-block; margin-top: 4px; font-size: .64rem; font-weight: 600;
+  color: var(--text-muted); background: rgba(255,255,255,.8); padding: 3px 9px; border-radius: 999px;
 }
 
 /* Contact */
@@ -317,6 +333,7 @@ section { padding: 96px 0; scroll-margin-top: 110px; }
   .form-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
+  .site-watermark img { width: min(58vw, 320px); opacity: .5; }
   .nav {
     position: fixed; inset: 0; z-index: 950;
     background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(244,238,253,.98));
