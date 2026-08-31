@@ -1,14 +1,19 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Header scroll state + progress bar */
+/* Header scroll state + progress bar + parallax da marca d'água */
 const header = document.getElementById('header');
 const progressBar = document.getElementById('progressBar');
+const root = document.documentElement;
 
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 8);
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   progressBar.style.width = scrolled + '%';
+
+  // onça desliza verticalmente conforme a rolagem da página (0% a 100%)
+  const wmShift = (scrolled / 100) * 220 - 110;
+  root.style.setProperty('--wm-scroll', wmShift.toFixed(1) + 'px');
 }, { passive: true });
 
 /* Mobile menu */
