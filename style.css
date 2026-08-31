@@ -40,7 +40,7 @@ body {
   display: flex; align-items: center; justify-content: center;
   pointer-events: none; overflow: hidden;
 }
-.site-watermark svg { width: min(72vw, 640px); height: auto; }
+.site-watermark img { width: min(72vw, 640px); height: auto; opacity: .5; }
 
 main, footer { position: relative; z-index: 1; }
 
@@ -83,7 +83,7 @@ ul, ol { padding-left: 0; list-style: none; }
 .header.scrolled .header-inner { background: rgba(255,255,255,.94); box-shadow: 0 14px 32px -12px rgba(115,70,194,.3); }
 .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
 .logo span { color: var(--lilac-600); }
-.logo-mark { color: var(--lilac-500); font-size: 1.2rem; }
+.logo-mark { width: 44px; height: 44px; object-fit: contain; }
 .nav { display: flex; align-items: center; gap: 32px; }
 .nav a { font-weight: 500; font-size: .95rem; color: var(--text); position: relative; padding: 4px 0; transition: color .2s; }
 .nav a:not(.nav-cta)::after {
