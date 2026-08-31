@@ -274,31 +274,48 @@ section {
 }
 .chat-input-row button:hover { background: var(--lilac-600); }
 
-/* Portfolio — cards em formato de pegada de onça, com garras */
-.portfolio-grid { display: grid; grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; gap: 36px; }
+/* Portfolio — trilha de pegadas de onça, com garras */
+.portfolio-grid {
+  display: flex; flex-direction: column; align-items: center;
+  max-width: 640px; margin: 0 auto; gap: 14px; position: relative;
+}
+.portfolio-grid::before {
+  content: ''; position: absolute; top: 10px; bottom: 10px; left: 50%;
+  width: 3px; transform: translateX(-50%);
+  background: repeating-linear-gradient(to bottom, var(--lilac-200) 0 10px, transparent 10px 20px);
+  z-index: -1;
+}
 .portfolio-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   text-decoration: none; cursor: pointer;
-  aspect-ratio: 300 / 380; width: 100%; max-width: 300px; margin: 0 auto;
-  background: linear-gradient(160deg, var(--lilac-100), var(--white) 60%);
+  aspect-ratio: 300 / 380; width: 100%; max-width: 268px;
+  background: linear-gradient(155deg, var(--lilac-400), var(--lilac-600) 75%);
   -webkit-mask-image: url("assets/pegada-mascara.svg");
   mask-image: url("assets/pegada-mascara.svg");
   -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;
-  filter: drop-shadow(0 8px 18px rgba(115,70,194,.16));
+  filter: drop-shadow(0 10px 20px rgba(115,70,194,.35));
   transition: transform .25s, filter .25s;
 }
-.portfolio-card:hover { transform: translateY(-4px) scale(1.03); filter: drop-shadow(0 16px 30px rgba(115,70,194,.34)); }
-.portfolio-card.is-private { cursor: default; background: linear-gradient(160deg, var(--bg-soft), var(--white) 60%); }
-.portfolio-card.is-private:hover { transform: none; filter: drop-shadow(0 8px 18px rgba(115,70,194,.16)); }
+/* zigue-zague: passo esquerdo / passo direito, como uma trilha */
+.portfolio-card:nth-child(odd) { align-self: flex-start; margin-left: 4%; transform: rotate(-7deg); }
+.portfolio-card:nth-child(even) { align-self: flex-end; margin-right: 4%; transform: rotate(7deg); }
+.portfolio-card:nth-child(odd):hover { transform: rotate(-7deg) translateY(-6px) scale(1.05); filter: drop-shadow(0 18px 32px rgba(115,70,194,.5)); }
+.portfolio-card:nth-child(even):hover { transform: rotate(7deg) translateY(-6px) scale(1.05); filter: drop-shadow(0 18px 32px rgba(115,70,194,.5)); }
+.portfolio-card.is-private {
+  cursor: default; background: linear-gradient(155deg, var(--lilac-200), var(--lilac-300) 75%);
+  filter: drop-shadow(0 8px 16px rgba(115,70,194,.2));
+}
+.portfolio-card.is-private:nth-child(odd):hover { transform: rotate(-7deg); filter: drop-shadow(0 8px 16px rgba(115,70,194,.2)); }
+.portfolio-card.is-private:nth-child(even):hover { transform: rotate(7deg); filter: drop-shadow(0 8px 16px rgba(115,70,194,.2)); }
 
 .paw-toes {
   display: flex; align-items: flex-end; justify-content: center;
   height: 29%; padding-top: 6%;
 }
 .portfolio-tag {
-  display: inline-block; background: rgba(255,255,255,.75); color: var(--lilac-600);
+  display: inline-block; background: rgba(255,255,255,.92); color: var(--lilac-600);
   font-size: .62rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
   padding: 3px 9px; border-radius: 999px;
 }
@@ -306,14 +323,16 @@ section {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   flex: 1; width: 56%; margin: 0 auto; gap: 6px; padding-bottom: 6%;
 }
-.portfolio-card h3 { font-size: .92rem; margin: 0; line-height: 1.25; }
+.portfolio-card h3 { font-size: .92rem; margin: 0; line-height: 1.25; color: #fff; }
 .portfolio-card p {
-  font-size: .74rem; line-height: 1.4; margin: 0; color: var(--text-muted);
+  font-size: .74rem; line-height: 1.4; margin: 0; color: rgba(255,255,255,.85);
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
+.portfolio-card.is-private h3 { color: var(--text); }
+.portfolio-card.is-private p { color: rgba(36,31,51,.7); }
 .portfolio-badge {
   display: inline-block; margin-top: 4px; font-size: .64rem; font-weight: 600;
-  color: var(--text-muted); background: rgba(255,255,255,.8); padding: 3px 9px; border-radius: 999px;
+  color: var(--lilac-600); background: rgba(255,255,255,.92); padding: 3px 9px; border-radius: 999px;
 }
 
 /* Contact */
