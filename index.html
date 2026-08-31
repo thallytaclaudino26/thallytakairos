@@ -13,6 +13,43 @@
 </head>
 <body>
 
+<div class="site-watermark" aria-hidden="true">
+  <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="jagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff4d94"/>
+        <stop offset="100%" stop-color="#ff8a3d"/>
+      </linearGradient>
+    </defs>
+    <path d="M40,300 Q10,280 25,240 Q55,270 70,300 Z" fill="url(#jagGrad)"/>
+    <path d="M460,300 Q490,280 475,240 Q445,270 430,300 Z" fill="url(#jagGrad)"/>
+    <polygon points="70,120 195,70 185,215" fill="url(#jagGrad)"/>
+    <polygon points="430,120 305,70 315,215" fill="url(#jagGrad)"/>
+    <polygon points="115,130 190,100 182,190" fill="#fff" opacity=".18"/>
+    <polygon points="385,130 310,100 318,190" fill="#fff" opacity=".18"/>
+    <ellipse cx="250" cy="280" rx="185" ry="160" fill="url(#jagGrad)"/>
+    <path d="M180,180 L215,230 L250,190 L285,230 L320,180" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M155,255 Q185,225 215,255 Q185,278 155,255 Z" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="4"/>
+    <path d="M345,255 Q315,225 285,255 Q315,278 345,255 Z" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="4"/>
+    <circle cx="185" cy="255" r="7" fill="#fff" fill-opacity=".5"/>
+    <circle cx="315" cy="255" r="7" fill="#fff" fill-opacity=".5"/>
+    <path d="M235,300 L265,300 L250,320 Z" fill="#fff" fill-opacity=".45"/>
+    <path d="M250,320 L250,345 M250,345 Q210,365 190,340 M250,345 Q290,365 310,340" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="140" cy="320" r="4" fill="#fff" fill-opacity=".35"/>
+    <circle cx="125" cy="340" r="4" fill="#fff" fill-opacity=".35"/>
+    <circle cx="130" cy="360" r="4" fill="#fff" fill-opacity=".35"/>
+    <circle cx="360" cy="320" r="4" fill="#fff" fill-opacity=".35"/>
+    <circle cx="375" cy="340" r="4" fill="#fff" fill-opacity=".35"/>
+    <circle cx="370" cy="360" r="4" fill="#fff" fill-opacity=".35"/>
+    <path d="M120,190 a10,10 0 1,0 20,4" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+    <path d="M380,190 a10,10 0 1,1 -20,4" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+    <path d="M160,340 a8,8 0 1,0 16,3" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+    <path d="M340,340 a8,8 0 1,1 -16,3" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+    <path d="M200,150 a9,9 0 1,0 18,3" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+    <path d="M300,150 a9,9 0 1,1 -18,3" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+  </svg>
+</div>
+
 <div class="progress-bar" id="progressBar"></div>
 
 <header class="header" id="header">
@@ -47,7 +84,7 @@
         atenderem melhor e perderem menos tempo com tarefas repetitivas.
       </p>
       <div class="hero-actions reveal">
-        <a href="#contato" class="btn btn-primary">Quero uma solução para meu negócio</a>
+        <a href="#contato" class="btn btn-accent">Quero uma solução para meu negócio</a>
         <a href="#servicos" class="btn btn-ghost">Ver serviços ↓</a>
       </div>
       <div class="hero-stats reveal">
@@ -210,23 +247,104 @@
     <div class="container">
       <p class="section-tag reveal">Projetos</p>
       <h2 class="reveal">Um pouco do que já criamos</h2>
-      <p class="section-sub reveal">Em breve, novos projetos entram nesta vitrine.</p>
+      <p class="section-sub reveal">Uma amostra de sites, sistemas e produtos de IA já desenvolvidos para clientes de diferentes segmentos.</p>
       <div class="portfolio-grid">
-        <div class="portfolio-card reveal placeholder">
+
+        <a href="https://samuca-carnes.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Varejo</span>
           <div class="portfolio-thumb"></div>
-          <h3>Novo projeto em breve</h3>
-          <p>Estamos preparando esta vitrine com os próximos cases da Kairos Digital.</p>
-        </div>
-        <div class="portfolio-card reveal placeholder">
+          <h3>Samuca Carnes</h3>
+          <p>Site para açougue, com cardápio digital e contato direto pelo WhatsApp.</p>
+        </a>
+
+        <a href="https://samuca-hud.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Varejo</span>
           <div class="portfolio-thumb"></div>
-          <h3>Novo projeto em breve</h3>
-          <p>Fale com a gente para ver projetos sob medida para o seu segmento.</p>
-        </div>
-        <div class="portfolio-card reveal placeholder">
+          <h3>Samuca Carnes — Painel HUD</h3>
+          <p>Painel visual complementar para exibição de ofertas e informações em loja.</p>
+        </a>
+
+        <a href="https://supermercado-treviso.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Varejo</span>
           <div class="portfolio-thumb"></div>
-          <h3>Novo projeto em breve</h3>
-          <p>Cada solução é construída sob medida para o negócio do cliente.</p>
+          <h3>Supermercado Treviso</h3>
+          <p>Site institucional para rede de supermercados.</p>
+        </a>
+
+        <a href="https://sistema-perda-mercado.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Sistema</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Sistema de Perda de Mercado</h3>
+          <p>Sistema web para controle de perdas e quebras de estoque em supermercado.</p>
+        </a>
+
+        <a href="https://barbearia-arantes-v2.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Serviços</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Barbearia Arantes</h3>
+          <p>Site para barbearia, com apresentação de serviços e agendamento.</p>
+        </a>
+
+        <a href="https://ourodigital-tau.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Vendas</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Ouro Digital</h3>
+          <p>Plataforma digital para negócio do setor de ouro e joias.</p>
+        </a>
+
+        <a href="https://ramiresvendas.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Vendas</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Ramires Vendas</h3>
+          <p>Site para apoiar a operação comercial de uma equipe de vendas.</p>
+        </a>
+
+        <a href="https://coracao-na-rua.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Social</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Coração na Rua</h3>
+          <p>Site institucional para projeto social.</p>
+        </a>
+
+        <a href="https://rede-xglobal.vercel.app" target="_blank" rel="noopener" class="portfolio-card reveal">
+          <span class="portfolio-tag">Negócios</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Rede X Global</h3>
+          <p>Site institucional para rede de negócios.</p>
+        </a>
+
+        <div class="portfolio-card reveal is-private">
+          <span class="portfolio-tag">Fitness</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Canabarro Academy</h3>
+          <p>Sistema para academia, com gestão de alunos e turmas.</p>
+          <span class="portfolio-badge">Projeto privado</span>
         </div>
+
+        <div class="portfolio-card reveal is-private">
+          <span class="portfolio-tag">Inteligência Artificial</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Dona Abeia</h3>
+          <p>Assistente virtual com IA para atendimento automatizado.</p>
+          <span class="portfolio-badge">Protótipo privado</span>
+        </div>
+
+        <div class="portfolio-card reveal is-private">
+          <span class="portfolio-tag">Inteligência Artificial</span>
+          <div class="portfolio-thumb"></div>
+          <h3>AI Video Editor</h3>
+          <p>MVP de editor de vídeo com automação por Inteligência Artificial.</p>
+          <span class="portfolio-badge">Protótipo privado</span>
+        </div>
+
+        <div class="portfolio-card reveal is-private">
+          <span class="portfolio-tag">Inteligência Artificial</span>
+          <div class="portfolio-thumb"></div>
+          <h3>Psi Assist</h3>
+          <p>Assistente com IA voltado a apoio e triagem psicológica.</p>
+          <span class="portfolio-badge">Protótipo privado</span>
+        </div>
+
       </div>
     </div>
   </section>

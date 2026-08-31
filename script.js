@@ -126,3 +126,18 @@ contactForm.addEventListener('submit', (e) => {
   formNote.textContent = 'Mensagem pronta! Em breve conectamos este formulário ao nosso atendimento. Por enquanto, fale com a gente pelo Instagram @_kairosdigital_ 💜';
   contactForm.reset();
 });
+
+/* Nav scroll-spy: destaca o link da seção visível */
+const navLinks = document.querySelectorAll('#mainNav a[href^="#"]');
+const spySections = [...navLinks]
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = '#' + entry.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+spySections.forEach(s => spyObserver.observe(s));
