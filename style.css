@@ -37,12 +37,12 @@ body {
 /* Site watermark (fixed background emblem) */
 .site-watermark {
   position: fixed; inset: 0; z-index: 0;
-  display: flex; align-items: center; justify-content: flex-end;
+  display: flex; align-items: center; justify-content: center;
   pointer-events: none; overflow: hidden;
 }
 .site-watermark img {
   width: min(60vw, 620px); height: auto; opacity: .75;
-  transform: translateX(18%) translateY(var(--wm-scroll, 0px));
+  transform: translateY(var(--wm-scroll, 0px));
   transition: transform .05s linear;
 }
 
