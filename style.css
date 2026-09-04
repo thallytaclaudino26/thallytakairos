@@ -407,6 +407,8 @@ section {
 .footer-links { display: flex; gap: 20px; margin: 8px 0; }
 .footer-links a { font-weight: 600; color: var(--brand-600); }
 .footer-copy { font-size: .82rem; color: var(--text-muted); margin-top: 18px; }
+.footer-credit { font-size: .72rem; color: var(--text-muted); opacity: .7; margin-top: 6px; }
+.footer-credit a { color: inherit; text-decoration: underline; }
 
 /* Floating action buttons (WhatsApp + Instagram) */
 .float-stack {
