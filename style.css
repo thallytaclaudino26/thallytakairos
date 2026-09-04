@@ -418,12 +418,13 @@ section {
 .float-btn {
   width: 52px; height: 52px; border-radius: 50%; color: #fff; display: flex;
   align-items: center; justify-content: center; box-shadow: var(--shadow);
-  transition: transform .2s, background .2s;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: transform .2s, background .2s, opacity .2s;
 }
-.float-ig { background: var(--brand-500); }
-.float-ig:hover { background: var(--brand-600); transform: translateY(-3px) scale(1.05); }
-.float-wpp { background: #25D366; }
-.float-wpp:hover { background: #1fb85a; transform: translateY(-3px) scale(1.05); }
+.float-ig { background: rgba(181, 101, 31, .62); }
+.float-ig:hover { background: rgba(140, 74, 21, .85); transform: translateY(-3px) scale(1.05); }
+.float-wpp { background: rgba(37, 211, 102, .62); }
+.float-wpp:hover { background: rgba(31, 184, 90, .85); transform: translateY(-3px) scale(1.05); }
 
 /* Responsive */
 @media (max-width: 880px) {
