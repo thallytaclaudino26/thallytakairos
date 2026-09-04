@@ -85,26 +85,28 @@ steps.forEach(step => {
   });
 });
 
-/* Interactive chatbot demo */
+/* Interactive chatbot demo — fluxo guiado: setor -> serviço -> agendamento */
 const chatBody = document.getElementById('chatBody');
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
+const WPP_NUMBER = '5562983392107';
+
+const SERVICES = [
+  { key: 'sites', label: '🌐 Sites & Sistemas',
+    blurb: 'Ótima escolha! Criamos sites, sistemas e aplicativos sob medida para o seu negócio vender e atender melhor.' },
+  { key: 'automacao', label: '⚙️ Automação com IA',
+    blurb: 'Ótima escolha! Nossa automação com IA cuida de tarefas repetitivas — vendas, atendimento, organização — pra sua equipe ganhar tempo.' },
+  { key: 'chatbot', label: '💬 Chatbots Inteligentes',
+    blurb: 'Ótima escolha! Um chatbot Kairos real aprende sobre o seu negócio e atende seus clientes 24h, no WhatsApp, site ou Instagram — como este aqui, só que de verdade! 😉' },
+];
 
 const RULES = [
   { keys: ['preço', 'preco', 'valor', 'quanto custa', 'investimento'],
     reply: 'Cada projeto é único, então o valor depende do escopo. Preencha o formulário de contato que te enviamos uma proposta personalizada sem compromisso. 💜' },
-  { keys: ['site', 'sistema', 'aplicativo', 'app'],
-    reply: 'Criamos sites, sistemas e aplicativos sob medida! O processo passa por diagnóstico, protótipo, desenvolvimento e suporte. Quer que eu te direcione para a equipe?' },
-  { keys: ['automação', 'automacao', 'automatizar'],
-    reply: 'Nossa automação com IA cuida de tarefas repetitivas — vendas, atendimento, organização — para sua equipe ganhar tempo. Posso te mostrar exemplos reais no formulário de contato.' },
-  { keys: ['chatbot', 'atendimento', 'whatsapp'],
-    reply: 'Este chat é um exemplo simplificado! Um chatbot Kairos real aprende sobre o seu negócio e atende seus clientes 24h, no WhatsApp, site ou Instagram.' },
   { keys: ['como funciona', 'processo', 'etapas'],
     reply: 'É simples: 1) Diagnóstico gratuito, 2) Proposta personalizada, 3) Desenvolvimento, 4) Suporte contínuo. Dá uma olhada na seção "Como funciona" acima ☝️' },
   { keys: ['contato', 'falar', 'humano', 'pessoa'],
     reply: 'Claro! Você pode preencher o formulário aqui embaixo ou nos chamar no Instagram @_kairosdigital_ 💬' },
-  { keys: ['oi', 'ola', 'olá', 'bom dia', 'boa tarde', 'boa noite'],
-    reply: 'Oi! Que bom te ver por aqui. Quer saber sobre sites, automação com IA ou chatbots?' },
 ];
 
 const DEFAULT_REPLY = 'Ótima pergunta! Na Kairos Digital a gente resolve isso com IA sob medida. Quer falar com a nossa equipe pelo formulário ou pelo Instagram @_kairosdigital_?';
@@ -113,6 +115,14 @@ function matchReply(text) {
   const t = text.toLowerCase();
   const found = RULES.find(r => r.keys.some(k => t.includes(k)));
   return found ? found.reply : DEFAULT_REPLY;
+}
+
+function matchServiceKey(text) {
+  const t = text.toLowerCase();
+  if (/site|sistema|app|aplicativo/.test(t)) return 'sites';
+  if (/automa/.test(t)) return 'automacao';
+  if (/chatbot|whats|atendimento/.test(t)) return 'chatbot';
+  return null;
 }
 
 function addMessage(text, who) {
@@ -133,6 +143,69 @@ function showTyping() {
   return msg;
 }
 
+function addQuickReplies(onPick) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-quick-replies';
+  SERVICES.forEach(service => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'chat-quick-reply';
+    btn.textContent = service.label;
+    btn.addEventListener('click', () => {
+      wrap.remove();
+      addMessage(service.label, 'user');
+      onPick(service.key);
+    });
+    wrap.appendChild(btn);
+  });
+  chatBody.appendChild(wrap);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  return wrap;
+}
+
+function addCtaLink(text, href) {
+  const a = document.createElement('a');
+  a.className = 'chat-cta-link';
+  a.href = href;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.textContent = text;
+  chatBody.appendChild(a);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+let stage = 'sector'; // sector -> service -> done
+let clientSector = '';
+
+function askServiceStep() {
+  const typingEl = showTyping();
+  setTimeout(() => {
+    typingEl.remove();
+    addMessage('Entendi! E qual desses 3 serviços faz mais sentido pro seu negócio agora?', 'bot');
+    addQuickReplies(handleServiceChoice);
+    stage = 'service';
+  }, 600 + Math.random() * 400);
+}
+
+function handleServiceChoice(key) {
+  const service = SERVICES.find(s => s.key === key) || SERVICES[0];
+  const typingEl = showTyping();
+  setTimeout(() => {
+    typingEl.remove();
+    addMessage(service.blurb, 'bot');
+    const typingEl2 = showTyping();
+    setTimeout(() => {
+      typingEl2.remove();
+      addMessage('Vamos agendar o seu diagnóstico gratuito! 🎉', 'bot');
+      const text = encodeURIComponent(
+        `Quero agendar meu diagnóstico gratuito. Área que precisa de atenção: ${clientSector}. Serviço de interesse: ${service.label}.`
+      );
+      addCtaLink('Agendar diagnóstico grátis →', `https://wa.me/${WPP_NUMBER}?text=${text}`);
+      stage = 'done';
+    }, 700 + Math.random() * 400);
+  }, 600 + Math.random() * 400);
+}
+
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const value = chatInput.value.trim();
@@ -140,6 +213,28 @@ chatForm.addEventListener('submit', (e) => {
   addMessage(value, 'user');
   chatInput.value = '';
 
+  if (stage === 'sector') {
+    clientSector = value;
+    askServiceStep();
+    return;
+  }
+
+  if (stage === 'service') {
+    const key = matchServiceKey(value);
+    if (key) {
+      handleServiceChoice(key);
+    } else {
+      const typingEl = showTyping();
+      setTimeout(() => {
+        typingEl.remove();
+        addMessage('Pra eu te indicar certinho, escolhe uma das opções abaixo 👇', 'bot');
+        addQuickReplies(handleServiceChoice);
+      }, 500 + Math.random() * 300);
+    }
+    return;
+  }
+
+  // stage === 'done' — segue no papo livre
   const typingEl = showTyping();
   const delay = 600 + Math.random() * 500;
   setTimeout(() => {
