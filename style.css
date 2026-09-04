@@ -76,17 +76,23 @@ ul, ol { padding-left: 0; list-style: none; }
 /* Navegação flutuante (sem barra fixa) */
 .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
 .logo span { color: var(--brand-600); }
-.logo-mark { width: 44px; height: 44px; object-fit: contain; }
+.logo-mark { width: 40px; height: 48px; object-fit: contain; }
 
 .brand-float {
-  position: fixed; top: 18px; left: 18px; z-index: 960;
-  width: 50px; height: 50px; border-radius: 50%;
+  position: fixed; top: 14px; left: 18px; z-index: 960;
+  display: flex; align-items: center; gap: 10px;
   background: rgba(255,255,255,.85); backdrop-filter: blur(10px);
-  display: flex; align-items: center; justify-content: center;
+  padding: 6px 18px 6px 6px; border-radius: 999px;
   box-shadow: var(--shadow); transition: transform .2s;
 }
-.brand-float:hover { transform: translateY(-2px) scale(1.06); }
-.brand-float img { width: 32px; height: 32px; object-fit: contain; }
+.brand-float:hover { transform: translateY(-2px); }
+.brand-float img { width: 42px; height: 42px; object-fit: contain; display: block; }
+.brand-name { display: flex; flex-direction: column; line-height: 1.05; font-family: var(--font-head); }
+.brand-name strong { font-size: .84rem; font-weight: 800; letter-spacing: .01em; color: var(--text); }
+.brand-name em {
+  font-style: normal; font-size: .6rem; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--brand-600);
+}
 
 .menu-toggle {
   position: fixed; top: 18px; right: 18px; z-index: 960;
@@ -419,10 +425,11 @@ section {
 }
 @media (max-width: 760px) {
   .site-watermark img { width: min(72vw, 400px); opacity: .08; }
-  .brand-float, .menu-toggle { width: 44px; height: 44px; top: 14px; }
-  .brand-float { left: 14px; }
-  .menu-toggle { right: 14px; }
-  .brand-float img { width: 28px; height: 28px; }
+  .menu-toggle { width: 44px; height: 44px; top: 14px; right: 14px; }
+  .brand-float { top: 12px; left: 12px; padding: 5px 14px 5px 5px; gap: 8px; }
+  .brand-float img { width: 32px; height: 32px; }
+  .brand-name strong { font-size: .76rem; }
+  .brand-name em { font-size: .52rem; letter-spacing: .12em; }
   .hero { padding-top: 96px; }
   .hero-stats { gap: 24px; }
   .portfolio-grid { gap: 28px 16px; }
