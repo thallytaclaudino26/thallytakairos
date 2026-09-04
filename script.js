@@ -4,6 +4,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const progressBar = document.getElementById('progressBar');
 const root = document.documentElement;
 const watermarkImg = document.querySelector('.site-watermark img');
+const aboutSection = document.querySelector('.about');
 
 // calcula quanto dá pra deslocar a onça verticalmente sem cortar a imagem
 // (metade do espaço livre acima/abaixo dela na tela, com uma margem de segurança)
@@ -18,6 +19,15 @@ if (watermarkImg && !watermarkImg.complete) {
   watermarkImg.addEventListener('load', () => { wmRange = getWatermarkRange(); });
 }
 
+// ponto do scroll em que a onça deve estar 100% revelada: a 2ª seção ("Quem somos")
+const WM_OPACITY_START = 0.06;
+const WM_OPACITY_END = 0.4;
+function getWatermarkRevealTarget() {
+  return aboutSection ? aboutSection.offsetTop : window.innerHeight;
+}
+let wmRevealTarget = getWatermarkRevealTarget();
+window.addEventListener('resize', () => { wmRevealTarget = getWatermarkRevealTarget(); }, { passive: true });
+
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
@@ -26,6 +36,11 @@ window.addEventListener('scroll', () => {
   // onça desliza verticalmente conforme a rolagem da página (0% a 100%), sem cortar
   const wmShift = (scrolled / 100) * (wmRange * 2) - wmRange;
   root.style.setProperty('--wm-scroll', wmShift.toFixed(1) + 'px');
+
+  // onça vai se revelando (fica mais opaca) até a 2ª página do scroll
+  const revealProgress = Math.min(1, Math.max(0, h.scrollTop / wmRevealTarget));
+  const wmOpacity = WM_OPACITY_START + revealProgress * (WM_OPACITY_END - WM_OPACITY_START);
+  root.style.setProperty('--wm-opacity', wmOpacity.toFixed(2));
 }, { passive: true });
 
 /* Esconde a marca d'água de fundo enquanto a grade de pegadas (portfólio) está na tela */

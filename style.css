@@ -46,10 +46,10 @@ body {
 }
 body.hide-watermark .site-watermark { opacity: 0; }
 .site-watermark img {
-  width: min(60vw, 620px); height: auto; opacity: .1;
+  width: min(60vw, 620px); height: auto; opacity: var(--wm-opacity, .06);
   filter: saturate(.6);
   transform: translateY(var(--wm-scroll, 0px));
-  transition: transform .05s linear;
+  transition: transform .05s linear, opacity .1s linear;
 }
 
 main, footer { position: relative; z-index: 1; }
@@ -188,11 +188,12 @@ ul, ol { padding-left: 0; list-style: none; }
 /* Hero — vídeo de floresta em tela cheia, imersivo */
 .hero { position: relative; padding: 168px 0 100px; overflow: hidden; background: #1a1408; }
 .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-.hero-video {
-  position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
-  width: auto; height: auto; transform: translate(-50%, -50%);
-  object-fit: cover;
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-video-bg {
+  object-fit: cover; transform: scale(1.15);
+  filter: blur(44px) brightness(.55) saturate(1.15);
 }
+.hero-video-fg { object-fit: contain; }
 .hero-video-overlay {
   position: absolute; inset: 0;
   background:
@@ -432,7 +433,7 @@ section {
   .form-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
-  .site-watermark img { width: min(72vw, 400px); opacity: .08; }
+  .site-watermark img { width: min(72vw, 400px); }
   .menu-toggle { width: 44px; height: 44px; top: 14px; right: 14px; }
   .brand-float { top: 10px; left: 10px; gap: 8px; }
   .brand-float img { width: 46px; height: 46px; }
