@@ -28,7 +28,7 @@ window.addEventListener('scroll', () => {
   root.style.setProperty('--wm-scroll', wmShift.toFixed(1) + 'px');
 }, { passive: true });
 
-/* Esconde a marca d'água de fundo enquanto a trilha de pegadas (portfólio) está na tela */
+/* Esconde a marca d'água de fundo enquanto a grade de pegadas (portfólio) está na tela */
 const portfolioSection = document.getElementById('portfolio');
 if (portfolioSection) {
   const watermarkObserver = new IntersectionObserver((entries) => {

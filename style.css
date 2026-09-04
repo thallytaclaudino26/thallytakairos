@@ -325,32 +325,17 @@ section {
 }
 .chat-input-row button:hover { background: var(--brand-600); }
 
-/* Portfolio — trilha de pegadas de onça, subindo por cima de um galho */
+/* Portfolio — grade de pegadas de onça */
 .portfolio { position: relative; overflow: hidden; }
 .portfolio .container { position: relative; z-index: 1; }
 .portfolio-grid {
-  display: flex; flex-direction: column; align-items: center;
-  max-width: 640px; margin: 0 auto; gap: 14px; position: relative;
-}
-/* o galho: tronco cilíndrico com veio de madeira, nós e sombra própria (profundidade) */
-.portfolio-grid::before {
-  content: ''; position: absolute; top: -6px; bottom: -6px; left: 50%;
-  width: 38px; transform: translateX(-50%);
-  border-radius: 999px;
-  background:
-    radial-gradient(ellipse 15px 11px at 50% 10%, rgba(58,36,20,.55), transparent 72%),
-    radial-gradient(ellipse 13px 10px at 50% 42%, rgba(58,36,20,.5), transparent 72%),
-    radial-gradient(ellipse 16px 11px at 50% 74%, rgba(58,36,20,.55), transparent 72%),
-    radial-gradient(ellipse 12px 9px at 50% 94%, rgba(58,36,20,.45), transparent 72%),
-    repeating-linear-gradient(180deg, rgba(255,255,255,.12) 0 2px, transparent 2px 10px),
-    linear-gradient(90deg, #573822 0%, #7a5535 15%, #a37b4e 33%, #d3ab79 50%, #a37b4e 67%, #7a5535 85%, #573822 100%);
-  box-shadow: 0 26px 46px -18px rgba(65,38,16,.55), inset -4px 0 7px rgba(0,0,0,.28), inset 4px 0 7px rgba(255,255,255,.18);
-  z-index: -1;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 980px; margin: 0 auto; gap: 36px 24px; position: relative;
 }
 .portfolio-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   text-decoration: none; cursor: pointer;
-  aspect-ratio: 300 / 380; width: 100%; max-width: 268px;
+  aspect-ratio: 300 / 380; width: 100%; max-width: 260px; margin: 0 auto;
   background-image: url("assets/pegada-textura.png");
   background-size: cover; background-position: center;
   -webkit-mask-image: url("assets/pegada-mascara.svg");
@@ -362,20 +347,9 @@ section {
   transform: rotate(var(--rot, 0deg));
   transition: transform .5s cubic-bezier(.22,.85,.32,1.2), filter .5s ease;
 }
-/* trilha orgânica: deslocamento e ângulo variam a cada pegada, nada de zigue-zague mecânico */
-.portfolio-card:nth-child(1)  { --rot: -5deg;  align-self: flex-start; margin-left: 2%; }
-.portfolio-card:nth-child(2)  { --rot: 9deg;   align-self: flex-end;   margin-right: 14%; }
-.portfolio-card:nth-child(3)  { --rot: -10deg; align-self: flex-start; margin-left: 16%; }
-.portfolio-card:nth-child(4)  { --rot: 6deg;   align-self: flex-end;   margin-right: 3%; }
-.portfolio-card:nth-child(5)  { --rot: -6deg;  align-self: flex-start; margin-left: 9%; }
-.portfolio-card:nth-child(6)  { --rot: 11deg;  align-self: flex-end;   margin-right: 18%; }
-.portfolio-card:nth-child(7)  { --rot: -8deg;  align-self: flex-start; margin-left: 1%; }
-.portfolio-card:nth-child(8)  { --rot: 5deg;   align-self: flex-end;   margin-right: 9%; }
-.portfolio-card:nth-child(9)  { --rot: -12deg; align-self: flex-start; margin-left: 13%; }
-.portfolio-card:nth-child(10) { --rot: 7deg;   align-self: flex-end;   margin-right: 2%; }
-.portfolio-card:nth-child(11) { --rot: -7deg;  align-self: flex-start; margin-left: 19%; }
-.portfolio-card:nth-child(12) { --rot: 10deg;  align-self: flex-end;   margin-right: 7%; }
-.portfolio-card:nth-child(13) { --rot: -9deg;  align-self: flex-start; margin-left: 5%; }
+/* leve rotação alternada — dá textura orgânica sem trilha/zigue-zague */
+.portfolio-card:nth-child(odd)  { --rot: -3deg; }
+.portfolio-card:nth-child(even) { --rot: 3deg; }
 .portfolio-card:hover { transform: rotate(var(--rot, 0deg)) translateY(-6px) scale(1.05); filter: drop-shadow(0 18px 32px rgba(140,74,21,.5)); }
 
 /* revelação orgânica: a pegada surge borrada/encolhida, como um mistério sendo revelado ao rolar */
@@ -485,6 +459,6 @@ section {
   .brand-float img { width: 28px; height: 28px; }
   .hero { padding-top: 96px; }
   .hero-stats { gap: 24px; }
-  .portfolio-grid::before { width: 24px; }
+  .portfolio-grid { gap: 28px 16px; }
   .ficon { opacity: .28; }
 }
