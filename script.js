@@ -108,23 +108,23 @@ const WPP_NUMBER = '5562983392107';
 
 const SERVICES = [
   { key: 'sites', label: '🌐 Sites & Sistemas',
-    blurb: 'Ótima escolha! Criamos sites, sistemas e aplicativos sob medida para o seu negócio vender e atender melhor.' },
+    blurb: 'Ótima escolha! Criamos sites, sistemas e aplicativos autorais, pensados para o seu negócio vender mais e atender com mais presença.' },
   { key: 'automacao', label: '⚙️ Automação com IA',
-    blurb: 'Ótima escolha! Nossa automação com IA cuida de tarefas repetitivas — vendas, atendimento, organização — pra sua equipe ganhar tempo.' },
+    blurb: 'Ótima escolha! Nossa automação com IA cuida das tarefas repetitivas — vendas, atendimento, organização — pra sua equipe ganhar tempo (e presença) pro que importa.' },
   { key: 'chatbot', label: '💬 Chatbots Inteligentes',
-    blurb: 'Ótima escolha! Um chatbot Kairos real aprende sobre o seu negócio e atende seus clientes 24h, no WhatsApp, site ou Instagram — como este aqui, só que de verdade! 😉' },
+    blurb: 'Ótima escolha! Um chatbot Kairos de verdade aprende sobre o seu negócio e conversa com seus clientes a qualquer hora, no WhatsApp, site ou Instagram — como este aqui, só que de verdade! 😉' },
 ];
 
 const RULES = [
   { keys: ['preço', 'preco', 'valor', 'quanto custa', 'investimento'],
-    reply: 'Cada projeto é único, então o valor depende do escopo. Preencha o formulário de contato que te enviamos uma proposta personalizada sem compromisso. 💜' },
+    reply: 'Cada projeto é único e autoral, então o valor depende do escopo. Preenche o formulário de contato que a gente te manda uma proposta personalizada, sem compromisso. 💜' },
   { keys: ['como funciona', 'processo', 'etapas'],
     reply: 'É simples: 1) Diagnóstico gratuito, 2) Proposta personalizada, 3) Desenvolvimento, 4) Suporte contínuo. Dá uma olhada na seção "Como funciona" acima ☝️' },
   { keys: ['contato', 'falar', 'humano', 'pessoa'],
     reply: 'Claro! Você pode preencher o formulário aqui embaixo ou nos chamar no Instagram @_kairosdigital_ 💬' },
 ];
 
-const DEFAULT_REPLY = 'Ótima pergunta! Na Kairos Digital a gente resolve isso com IA sob medida. Quer falar com a nossa equipe pelo formulário ou pelo Instagram @_kairosdigital_?';
+const DEFAULT_REPLY = 'Ótima pergunta! Na Kairos Strategy a gente resolve isso com tecnologia e sensibilidade, sob medida. Quer falar com a nossa equipe pelo formulário ou pelo Instagram @_kairosdigital_?';
 
 function matchReply(text) {
   const t = text.toLowerCase();
@@ -196,7 +196,7 @@ function askServiceStep() {
   const typingEl = showTyping();
   setTimeout(() => {
     typingEl.remove();
-    addMessage('Entendi! E qual desses 3 serviços faz mais sentido pro seu negócio agora?', 'bot');
+    addMessage('Entendi! E qual desses 3 caminhos faz mais sentido pro seu momento agora?', 'bot');
     addQuickReplies(handleServiceChoice);
     stage = 'service';
   }, 600 + Math.random() * 400);
