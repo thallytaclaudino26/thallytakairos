@@ -117,7 +117,7 @@ const RULES = [
   { keys: ['preço', 'preco', 'valor', 'quanto custa', 'investimento'],
     reply: 'Cada projeto é único e autoral, então o valor depende do escopo. Preenche o formulário de contato que a gente te manda uma proposta personalizada, sem compromisso. 💜' },
   { keys: ['como funciona', 'processo', 'etapas'],
-    reply: 'É simples: 1) Diagnóstico gratuito, 2) Proposta personalizada, 3) Desenvolvimento, 4) Suporte contínuo. Dá uma olhada na seção "Como funciona" acima ☝️' },
+    reply: 'É simples: me conta a área do seu negócio que mais precisa de cuidado, eu te indico o melhor caminho entre os nossos 3 serviços, e a gente já agenda um diagnóstico gratuito pelo WhatsApp. 💜' },
   { keys: ['contato', 'falar', 'humano', 'pessoa'],
     reply: 'Claro! Você pode preencher o formulário aqui embaixo ou nos chamar no Instagram @_kairosdigital_ 💬' },
 ];
