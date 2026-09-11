@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&family=Poppins:wght@700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,7 +31,6 @@
 
 <nav class="nav" id="mainNav">
   <a href="#servicos">Serviços</a>
-  <a href="#como-funciona">Como funciona</a>
   <a href="#demo">Demonstração</a>
   <a href="#portfolio">Projetos</a>
   <a href="#contato" class="nav-cta">Fale com a gente</a>
@@ -113,6 +112,43 @@
       <div class="service-grid">
 
         <article class="service-card reveal" data-service="sites">
+          <div class="demo-mock demo-mock--shop" aria-hidden="true">
+            <div class="mock-chrome">
+              <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+              <span class="mock-url">vitaverde.com.br</span>
+            </div>
+            <div class="mock-screen">
+              <div class="mock-shop-header">
+                <span class="mock-logo">VitaVerde</span>
+                <span class="mock-search"></span>
+                <span class="mock-cart">
+                  <svg viewBox="0 0 24 24" fill="none" width="15" height="15"><path d="M3 4h2l1.6 10.6a2 2 0 0 0 2 1.7h7.6a2 2 0 0 0 2-1.6L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="19.5" r="1.3" fill="currentColor"/></svg>
+                  <span class="mock-cart-count"><b class="c0">0</b><b class="c1">1</b></span>
+                </span>
+              </div>
+              <div class="mock-scene mock-scene-grid">
+                <span class="mock-product"></span>
+                <span class="mock-product mock-product--target"></span>
+                <span class="mock-product"></span>
+                <span class="mock-product"></span>
+              </div>
+              <div class="mock-scene mock-scene-detail">
+                <span class="mock-detail-img"></span>
+                <span class="mock-detail-title">Vitamina D3 · 60 cáps</span>
+                <span class="mock-detail-price">R$ 39,90</span>
+                <span class="mock-buy-btn"><b class="s0">Adicionar ao carrinho</b><b class="s1">Adicionado ✓</b></span>
+              </div>
+              <div class="mock-scene mock-scene-cart">
+                <span class="mock-cart-title">Seu carrinho</span>
+                <span class="mock-cart-item">Vitamina D3 — R$ 39,90</span>
+                <span class="mock-cart-total">Total · R$ 39,90</span>
+              </div>
+              <span class="mock-cursor"></span>
+              <span class="mock-click mock-click--a"></span>
+              <span class="mock-click mock-click--b"></span>
+            </div>
+          </div>
+          <p class="sr-only">Demonstração animada: a cliente navega por uma farmácia online fictícia, escolhe um produto, adiciona ao carrinho e finaliza a compra em poucos passos.</p>
           <div class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8.5H21" stroke="currentColor" stroke-width="1.6"/><circle cx="6.2" cy="6.2" r=".9" fill="currentColor"/><circle cx="8.6" cy="6.2" r=".9" fill="currentColor"/></svg>
           </div>
@@ -128,11 +164,40 @@
         </article>
 
         <article class="service-card reveal" data-service="automacao">
+          <div class="demo-mock demo-mock--panel" aria-hidden="true">
+            <div class="mock-chrome">
+              <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+              <span class="mock-url">odontovida.kairos.app</span>
+            </div>
+            <div class="mock-screen">
+              <div class="mock-panel-tabs">
+                <span class="mock-tab mock-tab--overview">Agenda</span>
+                <span class="mock-tab mock-tab--tickets">Pacientes</span>
+              </div>
+              <div class="mock-scene mock-scene-overview">
+                <span class="mock-kpi"><b>9</b>Consultas hoje</span>
+                <span class="mock-kpi"><b>132</b>Pacientes</span>
+                <span class="mock-kpi"><b>100%</b>Agenda cheia</span>
+                <span class="mock-bars">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </span>
+              </div>
+              <div class="mock-scene mock-scene-tickets">
+                <span class="mock-ticket-row">Beatriz L. · 14h <em class="mock-status mock-status--pending"><b class="s0">Pendente</b><b class="s1">Confirmado ✓</b></em></span>
+                <span class="mock-ticket-row">Rafael M. · 15h <em class="mock-status mock-status--done">Confirmado ✓</em></span>
+                <span class="mock-ticket-row">Sônia T. · 16h30 <em class="mock-status mock-status--done">Confirmado ✓</em></span>
+              </div>
+              <span class="mock-cursor"></span>
+              <span class="mock-click mock-click--a"></span>
+              <span class="mock-click mock-click--b"></span>
+            </div>
+          </div>
+          <p class="sr-only">Demonstração animada: um painel de consultório odontológico mostra a agenda do dia, a lista de pacientes e a automação confirmando uma consulta sozinha, sem a dentista precisar fazer nada manualmente.</p>
           <div class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
           <h3>Automação com Inteligência Artificial</h3>
-          <p>Automatizamos vendas, atendimento, organização financeira e processos do dia a dia — para sua equipe ganhar tempo e presença para o que realmente importa: criar, cuidar e se conectar.</p>
+          <p>Automatizamos vendas, atendimento, agenda e organização do dia a dia — como uma dentista que passa a gerenciar consultas, confirmações e pacientes sozinha, sem depender de ninguém.</p>
           <button class="service-toggle" aria-expanded="false">Como funciona <span>↓</span></button>
           <ol class="service-steps">
             <li><strong>1. Mapeamento —</strong> identificamos as tarefas repetitivas do seu dia a dia.</li>
@@ -143,6 +208,32 @@
         </article>
 
         <article class="service-card reveal" data-service="chatbot">
+          <div class="demo-mock demo-mock--wpp" aria-hidden="true">
+            <div class="mock-phone-island"></div>
+            <div class="mock-screen">
+              <div class="mock-scene mock-scene-site">
+                <span class="mock-site-bar"></span>
+                <span class="mock-site-line mock-site-line--a"></span>
+                <span class="mock-site-line mock-site-line--b"></span>
+                <span class="mock-site-line mock-site-line--c"></span>
+                <span class="mock-site-wpp-btn">💬</span>
+              </div>
+              <div class="mock-scene mock-scene-wpp-menu">
+                <span class="mock-wpp-header">Kairos · assistente</span>
+                <span class="mock-bubble mock-bubble--in">Oi! Como posso ajudar?</span>
+                <span class="mock-menu-item">Fazer um orçamento</span>
+                <span class="mock-menu-item mock-menu-item--pick">Agendar uma reunião gratuita</span>
+                <span class="mock-menu-item">Tirar dúvidas</span>
+              </div>
+              <div class="mock-scene mock-scene-confirm">
+                <span class="mock-confirm-check">✓</span>
+                <span class="mock-confirm-text">Reunião gratuita agendada!</span>
+              </div>
+              <span class="mock-cursor"></span>
+              <span class="mock-click mock-click--a"></span>
+            </div>
+          </div>
+          <p class="sr-only">Demonstração animada: em uma tela de celular, a visitante toca no botão do WhatsApp, vê o menu de atendimento do chatbot e agenda uma reunião gratuita automaticamente.</p>
           <div class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M9 21l2.2-4h1.6L15 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="11" r="1" fill="currentColor"/><circle cx="15" cy="11" r="1" fill="currentColor"/></svg>
           </div>
@@ -163,63 +254,6 @@
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="process">
-    <div class="section-icons" aria-hidden="true">
-      <span class="ficon soft" style="top:10%; right:10%; width:32px; height:32px; animation-duration:8.6s; animation-delay:-1.5s;">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </span>
-      <span class="ficon pink" style="bottom:16%; right:6%; width:30px; height:30px; animation-duration:7.8s; animation-delay:-4s;">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z" fill="currentColor"/></svg>
-      </span>
-      <span class="ficon" style="bottom:8%; left:8%; width:34px; height:34px; animation-duration:9.4s; animation-delay:-2.5s;">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M7 17a4 4 0 1 1 .7-7.94A5 5 0 0 1 17 11a3.5 3.5 0 0 1-.5 6.94H7Z" stroke="currentColor" stroke-width="1.5"/></svg>
-      </span>
-    </div>
-    <div class="container">
-      <p class="section-tag reveal">Processo</p>
-      <h2 class="reveal">Do primeiro encontro à solução que ganha vida</h2>
-      <p class="section-sub reveal">Um caminho simples, transparente e humano — pensado para quem nunca trabalhou com Inteligência Artificial antes.</p>
-
-      <div class="timeline reveal">
-        <button class="timeline-step active" data-step="1">
-          <span class="timeline-dot">1</span>
-          <span class="timeline-label">Diagnóstico gratuito</span>
-        </button>
-        <button class="timeline-step" data-step="2">
-          <span class="timeline-dot">2</span>
-          <span class="timeline-label">Proposta personalizada</span>
-        </button>
-        <button class="timeline-step" data-step="3">
-          <span class="timeline-dot">3</span>
-          <span class="timeline-label">Desenvolvimento</span>
-        </button>
-        <button class="timeline-step" data-step="4">
-          <span class="timeline-dot">4</span>
-          <span class="timeline-label">Suporte contínuo</span>
-        </button>
-      </div>
-
-      <div class="timeline-panels reveal">
-        <div class="timeline-panel active" data-panel="1">
-          <h3>1. Diagnóstico gratuito</h3>
-          <p>Conversamos sobre o seu negócio, seus desafios e seus sonhos — e sobre onde a tecnologia pode entrar para gerar mais resultado, sem custo e sem compromisso.</p>
-        </div>
-        <div class="timeline-panel" data-panel="2">
-          <h3>2. Proposta personalizada</h3>
-          <p>Construímos uma proposta clara e autoral, com escopo, prazos e investimento definidos — nada de pacotes prontos ou genéricos.</p>
-        </div>
-        <div class="timeline-panel" data-panel="3">
-          <h3>3. Desenvolvimento</h3>
-          <p>Colocamos a mão na massa com cuidado artesanal e atualizações constantes, para você acompanhar de perto cada etapa da criação.</p>
-        </div>
-        <div class="timeline-panel" data-panel="4">
-          <h3>4. Suporte contínuo</h3>
-          <p>Depois da entrega, seguimos ao seu lado — ajustando, evoluindo e cuidando para que a solução continue viva e gerando resultado.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- DEMO INTERATIVA -->
   <section id="demo" class="demo">
     <div class="section-icons" aria-hidden="true">
@@ -249,7 +283,8 @@
           <span class="chat-dot"></span> Assistente Kairos
         </div>
         <div class="chat-body" id="chatBody">
-          <div class="chat-msg bot">Olá! 👋 Eu sou o assistente virtual da Kairos Strategy. Pra começar, me conta: qual área do seu negócio mais pede cuidado agora? (ex: vendas, atendimento, organização interna...)</div>
+          <div class="chat-msg bot">Olá! 👋 Somos a Kairos Strategy.</div>
+          <div class="chat-msg bot">Por favor, me diga qual é a área do seu negócio que mais precisa do nosso cuidado agora. Por exemplo: vendas, atendimento, organização de estoque, automatização de atendimento...</div>
         </div>
         <form class="chat-input-row" id="chatForm">
           <input type="text" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off" maxlength="120">
@@ -404,9 +439,10 @@
     </div>
     <div class="container contact-inner reveal">
       <p class="section-tag">Vamos conversar</p>
-      <h2>Pronto para dar o próximo passo, com tecnologia e sensibilidade?</h2>
+      <h2>Vamos dar o primeiro passo com ousadia e assertividade?</h2>
       <p class="section-sub">Conte um pouco sobre o seu negócio, sua marca ou seu projeto — e retornamos o mais rápido possível.</p>
 
+      <div class="contact-main">
       <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div class="field">
@@ -445,6 +481,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
           @_kairosdigital_
         </a>
+      </div>
       </div>
     </div>
   </section>

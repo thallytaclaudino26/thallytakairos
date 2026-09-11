@@ -4,7 +4,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const progressBar = document.getElementById('progressBar');
 const root = document.documentElement;
 const watermarkImg = document.querySelector('.site-watermark img');
-const aboutSection = document.querySelector('.about');
 
 // calcula quanto dá pra deslocar a onça verticalmente sem cortar a imagem
 // (metade do espaço livre acima/abaixo dela na tela, com uma margem de segurança)
@@ -19,16 +18,16 @@ if (watermarkImg && !watermarkImg.complete) {
   watermarkImg.addEventListener('load', () => { wmRange = getWatermarkRange(); });
 }
 
-// ponto do scroll em que a onça deve estar 100% revelada: a 2ª seção ("Quem somos")
-const WM_OPACITY_START = 0.06;
-const WM_OPACITY_END = 0.4;
+// a onça só aparece a partir da seção "Experimente" (demo) até o final do site
+const WM_OPACITY_VISIBLE = 0.35;
+const demoSection = document.getElementById('demo');
 function getWatermarkRevealTarget() {
-  return aboutSection ? aboutSection.offsetTop : window.innerHeight;
+  return demoSection ? demoSection.offsetTop : window.innerHeight;
 }
 let wmRevealTarget = getWatermarkRevealTarget();
 window.addEventListener('resize', () => { wmRevealTarget = getWatermarkRevealTarget(); }, { passive: true });
 
-window.addEventListener('scroll', () => {
+function onScroll() {
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   progressBar.style.width = scrolled + '%';
@@ -37,21 +36,22 @@ window.addEventListener('scroll', () => {
   const wmShift = (scrolled / 100) * (wmRange * 2) - wmRange;
   root.style.setProperty('--wm-scroll', wmShift.toFixed(1) + 'px');
 
-  // onça vai se revelando (fica mais opaca) até a 2ª página do scroll
-  const revealProgress = Math.min(1, Math.max(0, h.scrollTop / wmRevealTarget));
-  const wmOpacity = WM_OPACITY_START + revealProgress * (WM_OPACITY_END - WM_OPACITY_START);
-  root.style.setProperty('--wm-opacity', wmOpacity.toFixed(2));
-}, { passive: true });
+  // só revela a onça quando a rolagem alcança (ou passa d)a seção "Experimente"
+  const reachedDemo = h.scrollTop + window.innerHeight * 0.4 >= wmRevealTarget;
+  root.style.setProperty('--wm-opacity', reachedDemo ? WM_OPACITY_VISIBLE : 0);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-/* Esconde a marca d'água de fundo enquanto a grade de pegadas (portfólio) está na tela */
-const portfolioSection = document.getElementById('portfolio');
-if (portfolioSection) {
-  const watermarkObserver = new IntersectionObserver((entries) => {
+/* Esconde a logo flutuante do canto assim que a página rola para além do hero */
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+  const brandObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      document.body.classList.toggle('hide-watermark', entry.isIntersecting);
+      document.body.classList.toggle('hide-brand', !entry.isIntersecting);
     });
   }, { threshold: 0.05 });
-  watermarkObserver.observe(portfolioSection);
+  brandObserver.observe(heroSection);
 }
 
 /* Mobile menu */
@@ -80,23 +80,21 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 revealEls.forEach(el => revealObserver.observe(el));
 
+/* Demonstrações animadas (farmácia / painel / WhatsApp) — tocam só quando visíveis */
+const demoMocks = document.querySelectorAll('.demo-mock');
+const demoMockObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('is-playing', entry.isIntersecting);
+  });
+}, { threshold: 0.35 });
+demoMocks.forEach(el => demoMockObserver.observe(el));
+
 /* Service cards - didactic expand */
 document.querySelectorAll('.service-card').forEach(card => {
   const btn = card.querySelector('.service-toggle');
   btn.addEventListener('click', () => {
     const isOpen = card.classList.toggle('open');
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-});
-
-/* Timeline (Como funciona) */
-const steps = document.querySelectorAll('.timeline-step');
-const panels = document.querySelectorAll('.timeline-panel');
-steps.forEach(step => {
-  step.addEventListener('click', () => {
-    const target = step.dataset.step;
-    steps.forEach(s => s.classList.toggle('active', s === step));
-    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
   });
 });
 
@@ -215,7 +213,7 @@ function handleServiceChoice(key) {
       const text = encodeURIComponent(
         `Quero agendar meu diagnóstico gratuito. Área que precisa de atenção: ${clientSector}. Serviço de interesse: ${service.label}.`
       );
-      addCtaLink('Agendar diagnóstico grátis →', `https://wa.me/${WPP_NUMBER}?text=${text}`);
+      addCtaLink('Agendar diagnóstico gratuito →', `https://wa.me/${WPP_NUMBER}?text=${text}`);
       stage = 'done';
     }, 700 + Math.random() * 400);
   }, 600 + Math.random() * 400);
