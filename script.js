@@ -110,7 +110,7 @@ const SERVICES = [
   { key: 'automacao', label: '⚙️ Automação com IA',
     blurb: 'Ótima escolha! Nossa automação com IA cuida das tarefas repetitivas — vendas, atendimento, organização — pra sua equipe ganhar tempo (e presença) pro que importa.' },
   { key: 'chatbot', label: '💬 Chatbots Inteligentes',
-    blurb: 'Ótima escolha! Um chatbot Kairos de verdade aprende sobre o seu negócio e conversa com seus clientes a qualquer hora, no WhatsApp, site ou Instagram — como este aqui, só que de verdade! 😉' },
+    blurb: 'Ótima escolha! Um chatbot Kairos Strategy de verdade aprende sobre o seu negócio e conversa com seus clientes a qualquer hora, no WhatsApp, site ou Instagram — como este aqui, só que de verdade! 😉' },
 ];
 
 const RULES = [
@@ -119,10 +119,10 @@ const RULES = [
   { keys: ['como funciona', 'processo', 'etapas'],
     reply: 'É simples: me conta a área do seu negócio que mais precisa de cuidado, eu te indico o melhor caminho entre os nossos 3 serviços, e a gente já agenda um diagnóstico gratuito pelo WhatsApp. 💜' },
   { keys: ['contato', 'falar', 'humano', 'pessoa'],
-    reply: 'Claro! Você pode preencher o formulário aqui embaixo ou nos chamar no Instagram @_kairosdigital_ 💬' },
+    reply: 'Claro! Você pode preencher o formulário aqui embaixo ou nos chamar no Instagram @strategykairos 💬' },
 ];
 
-const DEFAULT_REPLY = 'Ótima pergunta! Na Kairos Strategy a gente resolve isso com tecnologia e sensibilidade, sob medida. Quer falar com a nossa equipe pelo formulário ou pelo Instagram @_kairosdigital_?';
+const DEFAULT_REPLY = 'Ótima pergunta! Na Kairos Strategy a gente resolve isso com tecnologia e sensibilidade, sob medida. Quer falar com a nossa equipe pelo formulário ou pelo Instagram @strategykairos?';
 
 function matchReply(text) {
   const t = text.toLowerCase();
