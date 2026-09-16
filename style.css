@@ -384,6 +384,7 @@ section {
 }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-400); }
 .form-note { text-align: center; font-size: .88rem; color: var(--brand-600); font-weight: 600; min-height: 1.2em; margin-top: 10px; }
+.form-note.form-note-error { color: #d64545; }
 .contact-alt { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .contact-alt .btn { width: 100%; max-width: 320px; }
 .contact-alt span { color: var(--text-muted); font-size: .9rem; }

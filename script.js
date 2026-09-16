@@ -256,13 +256,36 @@ chatForm.addEventListener('submit', (e) => {
   }, delay);
 });
 
-/* Contact form (client-side only — no backend yet) */
+/* Contact form — envia via Formspree (site estático, sem backend próprio) */
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
-contactForm.addEventListener('submit', (e) => {
+const formSubmitBtn = contactForm.querySelector('button[type="submit"]');
+
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  formNote.textContent = 'Mensagem pronta! Em breve conectamos este formulário ao nosso atendimento. Por enquanto, fale com a gente pelo Instagram @_kairosdigital_ 💜';
-  contactForm.reset();
+  formSubmitBtn.disabled = true;
+  formNote.classList.remove('form-note-error');
+  formNote.textContent = 'Enviando...';
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' }
+    });
+
+    if (response.ok) {
+      formNote.textContent = 'Mensagem enviada! Em breve entramos em contato. 💜';
+      contactForm.reset();
+    } else {
+      throw new Error('Falha no envio');
+    }
+  } catch (err) {
+    formNote.classList.add('form-note-error');
+    formNote.textContent = 'Não conseguimos enviar agora. Tenta de novo ou chama no WhatsApp/Instagram ali do lado.';
+  } finally {
+    formSubmitBtn.disabled = false;
+  }
 });
 
 /* Nav scroll-spy: destaca o link da seção visível */
