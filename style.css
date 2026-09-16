@@ -370,8 +370,9 @@ section {
 
 /* Contact */
 .contact { background: rgba(251,243,231,.82); position: relative; overflow: hidden; }
-.contact-inner { max-width: 1040px; margin: 0 auto 0 0; text-align: left; position: relative; z-index: 1; }
-.contact-inner .section-sub { margin-left: 0; margin-right: auto; }
+.contact-inner { max-width: 1040px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.contact-inner .section-sub { margin-left: auto; margin-right: auto; }
+.contact-inner h2 { margin-left: auto; margin-right: auto; }
 .contact-main { display: flex; flex-direction: column; align-items: center; max-width: 560px; }
 .contact-form { text-align: left; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-lg); width: 100%; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
