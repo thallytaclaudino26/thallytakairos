@@ -27,7 +27,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 
 body {
   margin: 0;
@@ -164,7 +164,7 @@ body.hide-brand .brand-float { opacity: 0; visibility: hidden; pointer-events: n
 .btn-block { width: 100%; }
 
 /* Reveal animation */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1); }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* Ícones flutuantes de fundo — dão profundidade às seções em relação ao plano de fundo */
@@ -226,11 +226,11 @@ body.hide-brand .brand-float { opacity: 0; visibility: hidden; pointer-events: n
 .hero-stats strong { font-family: var(--font-head); font-size: 1.6rem; color: var(--brand-200); }
 .hero-stats span { font-size: .85rem; color: rgba(255,255,255,.68); }
 
-/* Section shared — cada seção ocupa a tela e "gruda" ao rolar (estilo feed) */
+/* Section shared — cada seção ocupa a tela, com rolagem livre e leve alinhamento ao parar */
 section {
   padding: 96px 0; scroll-margin-top: 24px;
   min-height: 100vh; display: flex; align-items: center;
-  scroll-snap-align: start; scroll-snap-stop: always;
+  scroll-snap-align: start;
 }
 .footer { scroll-snap-align: start; }
 .section-tag {
@@ -355,7 +355,7 @@ section {
 }
 .portfolio-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-6px); border-color: var(--brand-200); }
 .portfolio-card.is-private { cursor: default; }
-.portfolio-card.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.portfolio-card.reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1); }
 .portfolio-card.reveal.in-view { opacity: 1; transform: translateY(0); }
 .portfolio-card.reveal.in-view:hover { transform: translateY(-6px); }
 .portfolio-tag {

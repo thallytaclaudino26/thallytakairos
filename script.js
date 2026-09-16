@@ -40,7 +40,13 @@ function onScroll() {
   const reachedDemo = h.scrollTop + window.innerHeight * 0.4 >= wmRevealTarget;
   root.style.setProperty('--wm-opacity', reachedDemo ? WM_OPACITY_VISIBLE : 0);
 }
-window.addEventListener('scroll', onScroll, { passive: true });
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => { onScroll(); scrollTicking = false; });
+    scrollTicking = true;
+  }
+}, { passive: true });
 onScroll();
 
 /* Esconde a logo flutuante do canto assim que a página rola para além do hero */
